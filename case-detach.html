@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" href="uploads/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -9,136 +10,214 @@
 <x-dc>
 
 <helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-  <script src="./image-slot.js"></script>
-  <style>
-    body { margin: 0; -webkit-font-smoothing: antialiased; }
-    a { color: rgb(31,116,209); text-decoration: none; }
-    a:hover { color: rgb(92,158,228); }
-    * { box-sizing: border-box; }
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+ <style>
+ body { margin: 0; background: rgb(0,0,0); -webkit-font-smoothing: antialiased; }
+ a { color: rgb(31,116,209); text-decoration: none; }
+ a:hover { color: rgb(92,158,228); }
+ * { box-sizing: border-box; }
+ @keyframes langShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+ [data-lang-skel] { background: linear-gradient(90deg, rgb(232,232,232) 25%, rgb(242,242,242) 37%, rgb(232,232,232) 63%); background-size: 200% 100%; animation: langShimmer 1.1s ease-in-out infinite; border-radius:6px; }
 
-    @media (max-width: 760px) {
-      header { padding:14px 20px !important; gap:10px !important; }
-      header a { padding:9px 14px !important; font-size:12px !important; white-space:normal !important; text-align:center !important; }
-      header img { width:34px !important; height:30px !important; }
-      [style*="height:600px"] { height:min(70vh,440px) !important; }
-      [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; gap:20px !important; }
-      [style*="border-radius:32px; padding:8px 40px;"] { padding:8px 20px !important; }
-    }
-  </style>
+ @media (max-width: 860px) {
+ [data-site-frame] { margin:20px 0 !important; border-radius:24px !important; }
+
+ header { padding:14px 20px !important; gap:10px !important; grid-template-columns:auto 1fr !important; }
+ header a { padding:9px 14px !important; font-size:12px !important; white-space:normal !important; text-align:center !important; }
+ header > a[href*="index.html#cases"], header > a[href="index.html"]:not([style*="justify-self:center"]) { }
+ header > a[href="index.html#cases"] { display:none !important; }
+ header > a[href="index.html"] { justify-self:start !important; }
+ header > div:last-child { justify-self:end !important; }
+ header img { width:34px !important; height:30px !important; }
+ [style*="height:600px"] { height:min(60vh,360px) !important; }
+ [data-meta-grid] { grid-template-columns:1fr !important; gap:20px !important; }
+  [data-meta-grid] p { font-size:14px !important; }
+  [style*="gap:64px"] { gap:16px !important; }
+  [style*="gap: 64px"] { gap:16px !important; }
+ [style*="border-radius:32px; padding:8px 40px;"] { padding:8px 20px !important; }
+ }
+ </style>
 </helmet>
 
-<div style="position:relative; width:100%; background:rgb(247,247,247); font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; overflow-x:hidden;">
+<div data-site-frame="" style="position:relative; margin:20px; background:rgb(247,247,247); border-radius:32px; overflow:hidden; font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
 
-  <header style="position:sticky; top:0; z-index:50; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:24px; padding:20px max(24px, calc((100% - 1090px)/2)); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px);">
-    <a href="index.html#cases" style="justify-self:start; display:flex; align-items:center; justify-content:center; padding:12px 24px; border-radius:100px; box-shadow:inset 0 0 0 1px rgb(200,200,200); font-size:14px; font-weight:500; color:rgb(0,0,0); white-space:nowrap; transition:background .3s ease;" style-hover="background:rgb(240,240,240);">Voltar para o início</a>
-    <a href="index.html" style="justify-self:center; display:flex; align-items:center;"><img src="assets/logo-hiago.png" alt="Hiago Catirsi" style="width:44px; height:38px; object-fit:contain;"></a>
-    <a href="case-design-ops.html" style="justify-self:end; display:flex; align-items:center; justify-content:center; padding:12px 24px; border-radius:100px; box-shadow:inset 0 0 0 1px rgb(200,200,200); font-size:14px; font-weight:500; color:rgb(0,0,0); white-space:nowrap; transition:background .3s ease;" style-hover="background:rgb(240,240,240);">Próximo case — Chapter de Design</a>
-  </header>
+ <header style="position:sticky; top:20px; z-index:50; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:24px; margin:0 max(24px, calc((100% - 1090px)/2)); padding:16px 32px; background:rgb(255,255,255); border-radius:32px;">
+ <a href="index.html#cases" style="justify-self:start; display:flex; align-items:center; justify-content:center; padding:12px 24px; border-radius:100px; box-shadow:inset 0 0 0 1px rgb(200,200,200); font-size:14px; font-weight:500; color:rgb(0,0,0); white-space:nowrap; transition:background .3s ease;" style-hover="background:rgb(240,240,240);">{{ t.navBack }}</a>
+ <a href="index.html" style="justify-self:center; display:flex; align-items:center;"><img src="assets/logo-hiago.png" alt="Hiago Catirsi" style="width:44px; height:38px; object-fit:contain;"></a>
+ <div style="justify-self:end; display:flex; align-items:center; gap:12px;">
+ <div style="display:flex; align-items:center; background:rgb(240,240,240); border-radius:100px; padding:4px; width:84px; height:38px; gap:2px;">
+ <button onClick="{{ setLangPt }}" style="{{ langBtnStylePt }}">PT</button>
+ <button onClick="{{ setLangEn }}" style="{{ langBtnStyleEn }}">EN</button>
+ </div>
+ <a href="case-meu-arco.html" style="display:flex; align-items:center; justify-content:center; padding:12px 24px; border-radius:100px; box-shadow:inset 0 0 0 1px rgb(200,200,200); font-size:14px; font-weight:500; color:rgb(0,0,0); white-space:nowrap; transition:background .3s ease;" style-hover="background:rgb(240,240,240);">{{ t.navNext }}</a>
+ </div>
+ </header>
 
-  <!-- HERO -->
-  <section data-reveal="r1" style="padding:32px max(24px, calc((100% - 1090px)/2)) 0;; {{ reveal.r1 }}">
-    <div style="position:relative; width:100%; height:600px; border-radius:32px; overflow:hidden; background:rgb(155,32,42);">
-      <image-slot id="detach-hero" src="assets/case-detach-cover.png" shape="rect" placeholder="Imagem de capa do case"></image-slot>
-      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.43) 50%, rgba(0,0,0,0.76) 100%); pointer-events:none;"></div>
-      <img src="assets/logo-detach-icon.png" alt="" style="position:absolute; left:clamp(24px,4vw,64px); top:clamp(24px,4vw,48px); height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
-      <div style="position:absolute; left:clamp(24px,4vw,64px); right:24px; bottom:clamp(24px,4vw,48px); display:flex; flex-direction:column; gap:14px; pointer-events:none;">
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Product Management</span>
-          <span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Design System</span>
-          <span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Metrics</span><span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Design Ops</span>
-        </div>
-        <h1 style="font-size:clamp(26px,3vw,32px); font-weight:500; line-height:120%; color:rgb(255,255,255); margin:0;">Design System como produto</h1>
-        <p style="font-size:16px; font-weight:300; line-height:120%; color:rgb(255,255,255); margin:0; max-width:520px;">Palestra que realizei para o Detach 2025 em Niterói - RJ</p>
-      </div>
-    </div>
-  </section>
+ <!-- HERO -->
+ <section data-reveal="r1" style="padding:32px max(24px, calc((100% - 1090px)/2)) 0;; {{ reveal.r1 }}">
+ <div style="position:relative; width:100%; height:600px; border-radius:32px; overflow:hidden; background:rgb(155,32,42);">
+ <img src="assets/case-detach-cover.png" alt="Imagem de capa do case" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:49% 53%;">
+ <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.43) 50%, rgba(0,0,0,0.76) 100%); pointer-events:none;"></div>
+ <img src="assets/logo-detach-icon.png" alt="" style="position:absolute; left:clamp(24px,4vw,64px); top:clamp(36px,6vw,64px); height:28px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+ <div style="position:absolute; left:clamp(24px,4vw,64px); right:24px; bottom:clamp(44px,7vw,80px); display:flex; flex-direction:column; gap:14px; pointer-events:none;">
+ <div style="display:flex; gap:10px; flex-wrap:wrap;">
+ <span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Product Management</span>
+ <span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Design System</span>
+ <span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Metrics</span><span style="font-size:12px; font-weight:500; color:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(255,255,255); border-radius:1000px; padding:8px 12px;">Design Ops</span>
+ </div>
+ <h1 style="font-size:clamp(26px,3vw,32px); font-weight:500; line-height:120%; color:rgb(255,255,255); margin:0;">{{ t.heroTitle }}</h1>
+ <p style="font-size:16px; font-weight:300; line-height:120%; color:rgb(255,255,255); margin:0; max-width:520px;">{{ t.heroSubtitle }}</p>
+ </div>
+ </div>
+ </section>
 
-  <!-- 01 CONTEXTO -->
-  <section data-reveal="r2" style="padding:96px max(24px, calc((100% - 1090px)/2)) 0; display:flex; gap:64px; flex-wrap:wrap;; {{ reveal.r2 }}">
-    <div style="flex:1 1 260px; min-width:220px; max-width:340px;">
-      <span style="font-size:14px; font-weight:300; letter-spacing:0.25em; color:rgb(76,76,76);">01 — Contexto</span>
-      <h2 style="font-size:24px; font-weight:600; line-height:130%; color:rgb(31,31,31); margin:16px 0 0;">Tratar o design system como um produto, não como projeto&nbsp;</h2>
-    </div>
-    <div style="flex:2 1 420px; min-width:280px; display:flex; flex-direction:column; gap:20px; font-size:16px; line-height:160%; color:rgb(76,76,76);">
-      <div style="margin:0;"><div>A palestra aborda como estruturar e gerenciar um Design System de forma eficiente, considerando as necessidades e a maturidade de cada empresa ou produto.&nbsp;</div><div><br></div><div>O grande diferencial está no foco em métricas de sucesso, como satisfação, engajamento, adoção e impacto financeiro. São apresentados diferentes caminhos para medir essas métricas, considerando o cenário e a maturidade de cada empresa. A ideia é oferecer uma abordagem prática e adaptável que permita mensurar o impacto real do Design System e embasar decisões estratégicas para resultados consistentes e escaláveis.</div></div>
-      
-    </div>
-  </section>
+ <!-- 01 CONTEXTO -->
+ <section data-reveal="r2" style="padding:96px max(24px, calc((100% - 1090px)/2)) 0; display:flex; gap:64px; flex-wrap:wrap;; {{ reveal.r2 }}">
+ <div style="flex:1 1 260px; min-width:220px; max-width:340px;">
+ <span style="font-size:14px; font-weight:300; letter-spacing:0.25em; color:rgb(76,76,76);">{{ t.s01Eyebrow }}</span>
+ <h2 style="font-size:24px; font-weight:600; line-height:130%; color:rgb(31,31,31); margin:16px 0 0;">{{ t.s01Title }}</h2>
+ </div>
+ <div style="flex:2 1 420px; min-width:280px; display:flex; flex-direction:column; gap:20px; font-size:16px; line-height:160%; color:rgb(76,76,76);">
+ <div style="margin:0;"><div>{{ t.s01P1 }}</div><div><br></div><div>{{ t.s01P2 }}</div></div>
+ 
+ </div>
+ </section>
 
-  <!-- VIDEO -->
-  <section data-reveal="r3" style="padding:48px max(24px, calc((100% - 1090px)/2)) 0;; {{ reveal.r3 }}">
-    <div style="position:relative; width:100%; aspect-ratio:16/9; border-radius:32px; overflow:hidden; background:rgb(0,0,0);">
-      <iframe src="https://www.youtube.com/embed/HISb5ZDkTHk?si=TRDDvrh5aVbH2RsD" title="YouTube video player" style="position:absolute; inset:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-    </div>
-  </section>
+ <!-- VIDEO -->
+ <section data-reveal="r3" style="padding:48px max(24px, calc((100% - 1090px)/2)) 0;; {{ reveal.r3 }}">
+ <div style="position:relative; width:100%; aspect-ratio:16/9; border-radius:32px; overflow:hidden; background:rgb(0,0,0);">
+ <iframe src="https://www.youtube.com/embed/HISb5ZDkTHk?si=TRDDvrh5aVbH2RsD" title="YouTube video player" style="position:absolute; inset:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+ </div>
+ </section>
 
-  <footer data-reveal="r4" style="margin:96px max(24px, calc((100% - 1090px)/2)) 24px; padding:32px 40px; border-radius:32px; background:rgb(0,0,0); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;; {{ reveal.r4 }}">
-    <span style="font-size:16px; font-weight:500; color:rgb(255,255,255); white-space:nowrap;">Hiago Catirsi, 2026</span>
-    <a href="mailto:hiago.catirsi@gmail.com" style="font-size:16px; font-weight:500; color:rgb(255,255,255); white-space:nowrap;" style-hover="color:rgb(179,179,179);">hiago.catirsi@gmail.com</a>
-    <div style="display:flex; gap:12px; align-items:center;">
-      <a href="https://medium.com/@hiago.catirsi" target="_blank" rel="noopener" aria-label="Medium" style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:14px; background:rgba(255,255,255,0.1); transform:rotate(9.15deg); transition:opacity .35s ease;" style-hover="opacity:0.7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="transform:rotate(-9.15deg);"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75c.66 0 1.19 2.57 1.19 5.75z" fill="white"></path></svg></a>
-      <a href="https://www.linkedin.com/in/hiago-catirsi/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:14px; background:rgba(255,255,255,0.1); transform:rotate(9.15deg); transition:opacity .35s ease;" style-hover="opacity:0.7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="transform:rotate(-9.15deg);"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45z" fill="white"></path></svg></a>
-    </div>
-  </footer>
+ <section style="padding:0 max(24px, calc((100% - 1090px)/2)) 24px;">
+ <a href="case-meu-arco.html" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:40px 48px; border-radius:32px; background:rgb(255,255,255); box-shadow:inset 0 0 0 1px rgb(230,230,230); text-decoration:none; transition:background .35s ease;" style-hover="background:rgb(242,242,242);">
+ <div style="display:flex; align-items:center; gap:24px;">
+ <div style="width:56px; height:56px; border-radius:16px; background:rgb(247,247,247); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+ <img src="assets/logo-arco-icon.png" alt="" style="width:60%; height:60%; object-fit:contain; filter:grayscale(1) contrast(1.05);">
+ </div>
+ <div style="display:flex; flex-direction:column; gap:8px;">
+ <span style="font-size:14px; font-weight:300; letter-spacing:0.2em; color:rgb(153,153,153);">{{ t.nextCaseLabel }}</span>
+ <span style="font-size:28px; font-weight:600; color:rgb(0,0,0);">{{ t.nextCaseTitle }}</span>
+ </div>
+ </div>
+ <div style="width:56px; height:56px; border-radius:50%; background:transparent; box-shadow:inset 0 0 0 1px rgb(200,200,200); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .3s ease;">
+ <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+ </div>
+ </a>
+</section>
 
+<footer data-reveal="r4" style="margin:96px max(24px, calc((100% - 1090px)/2)) 24px; padding:32px 40px; border-radius:32px; background:rgb(0,0,0); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;; {{ reveal.r4 }}">
+ <span style="font-size:16px; font-weight:500; color:rgb(255,255,255); white-space:nowrap;">Hiago Catirsi, 2026</span>
+ <a href="mailto:hiago.catirsi@gmail.com" style="font-size:16px; font-weight:500; color:rgb(255,255,255); white-space:nowrap;" style-hover="color:rgb(179,179,179);">hiago.catirsi@gmail.com</a>
+ <div style="display:flex; gap:12px; align-items:center;">
+ <a href="https://medium.com/@hiago.catirsi" target="_blank" rel="noopener" aria-label="Medium" style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:14px; background:rgba(255,255,255,0.1); transform:rotate(9.15deg); transition:opacity .35s ease;" style-hover="opacity:0.7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="transform:rotate(-9.15deg);"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75c.66 0 1.19 2.57 1.19 5.75z" fill="white"></path></svg></a>
+ <a href="https://www.linkedin.com/in/hiago-catirsi/" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:14px; background:rgba(255,255,255,0.1); transform:rotate(9.15deg); transition:opacity .35s ease;" style-hover="opacity:0.7;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="transform:rotate(-9.15deg);"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.11 20.45H3.56V9h3.55v11.45z" fill="white"></path></svg></a>
+ </div>
+ </footer>
+
+<div style="position: fixed; inset: 0; z-index: 999; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); pointer-events: {{ langOverlayPointer }}; opacity: {{ langOverlayOpacity }}; transition: opacity .25s ease;">
+ <div style="display:flex; flex-direction:column; gap:12px; width:260px; padding:28px; border-radius:20px; background:rgb(255,255,255); box-shadow:0 20px 60px rgba(0,0,0,0.12);">
+ <div data-lang-skel="" style="height:14px; width:60%;"></div>
+ <div data-lang-skel="" style="height:14px; width:90%;"></div>
+ <div data-lang-skel="" style="height:14px; width:75%;"></div>
+ </div>
+</div>
 <button onClick="{{ scrollTop }}" aria-label="Voltar ao topo" style="position:fixed; right:24px; bottom:24px; z-index:60; width:48px; height:48px; border-radius:50%; border:none; background:rgb(0,0,0); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.25); opacity:{{ backToTopOpacity }}; pointer-events:{{ backToTopPointer }}; transition:opacity .3s ease, transform .2s ease;" style-hover="transform:translateY(-3px);">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg>
 </button>
 
 </div>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const TRANSLATIONS = {
+ pt: {
+ navBack: "Voltar para o início", nextCaseLabel: "Próximo case", nextCaseTitle: "Meu Arco - Sistema Operacional", navNext: "Próximo case — Meu Arco",
+ heroTitle: "Design System como produto", heroSubtitle: "Palestra que realizei para o Detach 2025 em Niterói - RJ",
+ s01Eyebrow: "01 — Contexto", s01Title: "Tratar o design system como um produto, não como projeto",
+ s01P1: "A palestra aborda como estruturar e gerenciar um Design System de forma eficiente, considerando as necessidades e a maturidade de cada empresa ou produto.",
+ s01P2: "O grande diferencial está no foco em métricas de sucesso, como satisfação, engajamento, adoção e impacto financeiro. São apresentados diferentes caminhos para medir essas métricas, considerando o cenário e a maturidade de cada empresa. A ideia é oferecer uma abordagem prática e adaptável que permita mensurar o impacto real do Design System e embasar decisões estratégicas para resultados consistentes e escaláveis.",
+ },
+ en: {
+ navBack: "Back to home", nextCaseLabel: "Next case", nextCaseTitle: "Meu Arco - Operating System", navNext: "Next case — Meu Arco",
+ heroTitle: "Design System as a Product", heroSubtitle: "Talk I delivered at Detach 2025 in Niterói, RJ",
+ s01Eyebrow: "01 — Context", s01Title: "Treating the Design System as a product, not a project",
+ s01P1: "The talk covers how to structure and manage a Design System efficiently, taking into account the needs and maturity of each company or product.",
+ s01P2: "The key differentiator is the focus on success metrics — such as satisfaction, engagement, adoption, and financial impact. Different approaches to measuring those metrics are explored, accounting for each company's context and maturity. The goal is to offer a practical, adaptable framework for measuring a Design System's real impact and grounding strategic decisions in data, for consistent and scalable results.",
+ },
+};
+
 class Component extends DCLogic {
-  state = { showBackToTop: false, revealed: {} };
+ state = { showBackToTop: false, revealed: {}, lang: (typeof localStorage !== "undefined" && localStorage.getItem("hc_portfolio_lang")) || "pt", langLoading: false, pendingLang: null };
+ switchLang = (next) => {
+ if (next === this.state.lang || this.state.langLoading) return;
+ this.setState({ langLoading: true, pendingLang: next });
+ clearTimeout(this._langTimer);
+ this._langTimer = setTimeout(() => {
+ this.setState({ lang: next, langLoading: false, pendingLang: null });
+ try { localStorage.setItem("hc_portfolio_lang", next); } catch (e) {}
+ }, 480);
+ };
+ setLangPt = () => this.switchLang("pt");
+ setLangEn = () => this.switchLang("en");
 
-  revealStyle(key) {
-    const on = !!this.state.revealed[key];
-    return "transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); opacity:" +
-      (on ? 1 : 0) + "; transform:translateY(" + (on ? "0" : "20px") + ");";
-  }
+ revealStyle(key) {
+ const on = !!this.state.revealed[key];
+ return "transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1); opacity:" +
+ (on ? 1 : 0) + "; transform:translateY(" + (on ? "0" : "20px") + ");";
+ }
 
-  setupReveal() {
-    if (typeof IntersectionObserver === "undefined") return;
-    const nodes = document.querySelectorAll("[data-reveal]");
-    const observer = new IntersectionObserver((observed) => {
-      observed.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const key = entry.target.getAttribute("data-reveal");
-          this.setState((s) => ({ revealed: { ...s.revealed, [key]: true } }));
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    nodes.forEach((n) => observer.observe(n));
-  }
+ setupReveal() {
+ if (typeof IntersectionObserver === "undefined") return;
+ const nodes = document.querySelectorAll("[data-reveal]");
+ const observer = new IntersectionObserver((observed) => {
+ observed.forEach((entry) => {
+ if (entry.isIntersecting) {
+ const key = entry.target.getAttribute("data-reveal");
+ this.setState((s) => ({ revealed: { ...s.revealed, [key]: true } }));
+ observer.unobserve(entry.target);
+ }
+ });
+ }, { threshold: 0.15 });
+ nodes.forEach((n) => observer.observe(n));
+ }
 
-  componentDidMount() {
-    this.setupReveal();
-    this.onScroll = () => {
-      const show = window.scrollY > 480;
-      if (show !== this.state.showBackToTop) this.setState({ showBackToTop: show });
-    };
-    window.addEventListener("scroll", this.onScroll, { passive: true });
-  }
+ componentDidMount() {
+ this.setupReveal();
+ this.onScroll = () => {
+ const show = window.scrollY > 480;
+ if (show !== this.state.showBackToTop) this.setState({ showBackToTop: show });
+ };
+ window.addEventListener("scroll", this.onScroll, { passive: true });
+ }
 
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll);
-  }
+ componentWillUnmount() {
+ window.removeEventListener("scroll", this.onScroll);
+ }
 
-  scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+ scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  renderVals() {
-    return {
-      backToTopOpacity: this.state.showBackToTop ? 1 : 0,
-      backToTopPointer: this.state.showBackToTop ? "auto" : "none",
-      scrollTop: this.scrollTop,
-      reveal: { r1: this.revealStyle("r1"), r2: this.revealStyle("r2"), r3: this.revealStyle("r3"), r4: this.revealStyle("r4") },
-    };
-  }
+ renderVals() {
+ const lang = this.state.lang;
+ const t = TRANSLATIONS[lang];
+ const langBtnBase = "border:none; border-radius:100px; padding:0; flex:1; height:100%; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; transition:background .3s ease, color .3s ease;";
+ return {
+ t: t,
+ setLangPt: this.setLangPt,
+ setLangEn: this.setLangEn,
+ langOverlayOpacity: this.state.langLoading ? 1 : 0,
+ langOverlayPointer: this.state.langLoading ? "auto" : "none",
+ langBtnStylePt: langBtnBase + (lang === "pt" ? " background:rgb(0,0,0); color:rgb(255,255,255);" : " background:transparent; color:rgb(76,76,76);"),
+ langBtnStyleEn: langBtnBase + (lang === "en" ? " background:rgb(0,0,0); color:rgb(255,255,255);" : " background:transparent; color:rgb(76,76,76);"),
+ backToTopOpacity: this.state.showBackToTop ? 1 : 0,
+ backToTopPointer: this.state.showBackToTop ? "auto" : "none",
+ scrollTop: this.scrollTop,
+ reveal: { r1: this.revealStyle("r1"), r2: this.revealStyle("r2"), r3: this.revealStyle("r3"), r4: this.revealStyle("r4") },
+ };
+ }
 }
 
 </script>
