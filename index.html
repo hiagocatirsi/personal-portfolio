@@ -44,7 +44,7 @@
  [data-testi-title-block] { max-width:none !important; width:100% !important; text-align:left !important; align-items:flex-start !important; }
  [data-testi-title-block] span, [data-testi-title-block] h2, [data-testi-title-block] p { text-align:left !important; }
  [data-testi-track-wrap] { width:100% !important; flex:1 1 100% !important; }
- [data-testimonials-track] { padding-right:24px !important; width:100% !important; touch-action:pan-x; -webkit-overflow-scrolling:touch; } [data-cases-carousel] h3 { white-space:normal !important; }
+ [data-testimonials-track] { padding-right:24px !important; width:100% !important; touch-action:pan-y !important; -webkit-overflow-scrolling:touch; } [data-cases-carousel] h3 { white-space:normal !important; }
  [data-hero-lead] { font-size:24px !important; min-height:0 !important; margin-bottom:28px !important; }
  [data-testi-avatars] { width:100% !important; justify-content:center !important; }
  }
@@ -260,7 +260,7 @@
  </div>
 
  <div data-testi-track-wrap="" style="position:relative; flex:1 1 auto; min-width:0;">
- <div data-testimonials-track="" ref="{{ testimonialsTrackRef }}" style="overflow:hidden; padding:0 40px 8px 0; position:relative; height:{{ testiTrackHeight }};">
+ <div data-testimonials-track="" ref="{{ testimonialsTrackRef }}" style="overflow:hidden; padding:0 40px 8px 0; position:relative; height:{{ testiTrackHeight }}; touch-action:pan-y;" onTouchStart="{{ testiTouchStart }}" onTouchEnd="{{ testiTouchEnd }}">
  <sc-for list="{{ testimonials }}" as="item" hint-placeholder-count="3">
  <div data-testi-card="" style="{{ item.cardStyle }}">
  <p style="font-size:14px; line-height:160%; color:rgb(76,76,76); margin:0; overflow:hidden;">{{ item.quote }}</p>
@@ -380,7 +380,7 @@ const TRANSLATIONS = {
 };
 
 class Component extends DCLogic {
- state = { caseIndex: 2, noTransition: false, lang: (typeof localStorage !== "undefined" && localStorage.getItem("hc_portfolio_lang")) || "pt", testiScrolled: false, activeTesti: 0, revealed: {}, langLoading: false, pendingLang: null, typeWordIdx: 0, typeText: "", typePhase: "typing" };
+ state = { caseIndex: 1, noTransition: false, lang: (typeof localStorage !== "undefined" && localStorage.getItem("hc_portfolio_lang")) || "pt", testiScrolled: false, activeTesti: 0, revealed: {}, langLoading: false, pendingLang: null, typeWordIdx: 0, typeText: "", typePhase: "typing" };
  casesTrackRef = React.createRef();
  testimonialsTrackRef = React.createRef();
  heroRef = React.createRef();
@@ -423,6 +423,20 @@ class Component extends DCLogic {
  }
  });
  }
+
+ testiTouchStart = (e) => { this._testiDx = e.touches[0].clientX; this._testiDy = e.touches[0].clientY; };
+ testiTouchEnd = (e) => {
+ if (this._testiDx == null) return;
+ const dx = e.changedTouches[0].clientX - this._testiDx;
+ const dy = Math.abs(e.changedTouches[0].clientY - this._testiDy);
+ if (dy > Math.abs(dx)) { this._testiDx = null; return; }
+ this._testiDx = null;
+ if (Math.abs(dx) < 30) return;
+ const n = (this._testiCount || 3);
+ const dir = dx < 0 ? 1 : -1;
+ const next = (this.state.activeTesti + dir + n) % n;
+ this.goToTesti(next);
+ };
 
  goToTesti = (i) => {
  if (i === this.state.activeTesti) return;
@@ -606,6 +620,7 @@ class Component extends DCLogic {
  { quote: t.testi3, avatar: ((window.__resources && window.__resources['avatar-bruno']) || 'assets/avatar-bruno.png'), name: "Bruno Vasconcelos", role: t.testi3Role },
  ];
  const activeTesti = this.state.activeTesti || 0;
+ this._testiCount = testiReal.length;
  const vw = typeof window !== "undefined" ? window.innerWidth : 1200;
  const CARD_W = vw <= 860 ? Math.max(240, Math.min(360, vw - 96)) : 397;
  const GAP = vw <= 860 ? 16 : 24;
